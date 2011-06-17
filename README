@@ -1,0 +1,9 @@
+This repository includes my rc.lua, my theme.lua and vicious and obvious widgets (mostly default, with some tweaks).
+
+To install, rename your ~/.config/awesome/ to ~/.config/awesome.backup/ or the like,  clone this repository into ~/.config/ then restart awesome.
+
+If you wish to change the wallpaper, simply change the target of the symlink in the assets directory with `ln -s your_image ~/.config/awesome/themes/luigiitheme/assets/wallpaper'
+
+The default editor for this setup is emacs and the default terminal is urxvtc (i.e. urxvtd must be running).
+
+The theme is based on the zenburn theme provided with awesome, originally by anrxc
