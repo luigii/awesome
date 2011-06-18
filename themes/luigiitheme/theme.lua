@@ -73,9 +73,8 @@ theme.menu_width  = "100"
 
 -- {{{ Icons
 -- {{{ Taglist
-theme.taglist_squares_sel   = "/usr/share/awesome/themes/zenburn/taglist/squarefz.png"
-theme.taglist_squares_unsel = "/usr/share/awesome/themes/zenburn/taglist/squarez.png"
---theme.taglist_squares_resize = "false"
+theme.taglist_squares_sel   = awful.util.getdir("config") .. "/themes/luigiitheme/assets/squarefz.png"
+theme.taglist_squares_unsel = awful.util.getdir("config") .. "/themes/luigiitheme/assets/squarez.png"
 -- }}}
 
 -- {{{ Misc
