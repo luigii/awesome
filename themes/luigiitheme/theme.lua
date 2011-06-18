@@ -10,7 +10,7 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg" .. awful.util.getdir("config") .. "/themes/luigiitheme/assets/wallpaper" }
+theme.wallpaper_cmd = { "awsetbg -c " .. awful.util.getdir("config") .. "/themes/luigiitheme/assets/wallpaper.jpg" }
 -- }}}
 
 -- {{{ Styles
