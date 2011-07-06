@@ -24,7 +24,6 @@ require("obvious.clock")
 obvious.clock.set_editor("emacs")
 obvious.clock.set_shorttimer(1)
 require("obvious.battery")
-require("obvious.volume_alsa")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
