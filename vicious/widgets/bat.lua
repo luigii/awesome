@@ -25,9 +25,9 @@ local function worker(format, warg)
 
     local battery = helpers.pathtotable("/sys/class/power_supply/"..warg)
     local battery_state = {
-        ["Full\n"]        = "↯",
-        ["Unknown\n"]     = "⌁",
-        ["Charged\n"]     = "↯",
+        ["Full\n"]        = "",
+        ["Unknown\n"]     = "",
+        ["Charged\n"]     = "",
         ["Charging\n"]    = "+",
         ["Discharging\n"] = "-"
     }
