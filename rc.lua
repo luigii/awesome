@@ -31,7 +31,7 @@ beautiful.init(awful.util.getdir("config") .. "/themes/luigiitheme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc"
-editor = os.getenv("EDITOR") or "emacsclient -t -a """
+editor = os.getenv("EDITOR") or 'emacsclient -t -a ""'
 editor_cmd = terminal .. " -e " .. editor
 awesome.font = "mintsstrong.se 10"
 -- Default modkey.
