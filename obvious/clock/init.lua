@@ -38,8 +38,8 @@ module("obvious.clock")
 
 local initialized = false
 local defaults = { }
-defaults.shorttimeformat = " %H:%M"
-defaults.longtimeformat = " %F %T"
+defaults.shorttimeformat = " %H:%M "
+defaults.longtimeformat = " %F %T "
 defaults.editor = nil
 defaults.shorttimer =  60
 defaults.longtimer =  120

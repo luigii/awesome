@@ -16,8 +16,8 @@ require("vicious")
 --Vicious battery (comment out if not using a laptop, of course)
 --baticon = widget({ type = "imagebox" })
 --baticon.image = image(beautiful.widget_bat)
-battwidget = widget({ type = "textbox" })
-vicious.register(battwidget, vicious.widgets.bat, " $1$2% ", 20, "BAT1")
+--battwidget = widget({ type = "textbox" })
+--vicious.register(battwidget, vicious.widgets.bat, " $1$2% ", 20, "BAT1")
 
 --Obvious things
 require("obvious.clock")
