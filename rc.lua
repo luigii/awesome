@@ -1,31 +1,27 @@
+---------  Conall's rc.lua  ---------
+
+---- Required libraries ----
+-- Main awesome library
 require("awful.autofocus")
 require("awful.rules")
--- Theme handling library
+
+-- Theming
 require("beautiful")
--- Notification library
+
+-- Notifications
 require("naughty")
 naughty.config.default_preset.icon_size        = 16
 
---Vicious things
+-- Widget libraries
 require("vicious")
-
---separator for between widgets
---separator = widget({ type = "imagebox" })
---separator.image = image(beautiful.widget_sep)
-
---Vicious battery (comment out if not using a laptop, of course)
---baticon = widget({ type = "imagebox" })
---baticon.image = image(beautiful.widget_bat)
---battwidget = widget({ type = "textbox" })
---vicious.register(battwidget, vicious.widgets.bat, " $1$2% ", 20, "BAT1")
-
---Obvious things
 require("obvious.clock")
 obvious.clock.set_editor("emacs")
 obvious.clock.set_shorttimer(1)
 require("obvious.battery")
 
--- {{{ Variable definitions
+
+
+---- Variable definitions ----
 -- Themes define colours, icons, and wallpapers
 beautiful.init(awful.util.getdir("config") .. "/themes/luigiitheme/theme.lua")
 
@@ -58,22 +54,19 @@ layouts =
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 }
--- }}}
 
--- {{{ Tags
--- Define a tag table which hold all screen tags.
+
+
+---- Tags ----
+-- Define a tag table which holds all screen tags.
 tags = {
 names = {"main", "ffox", "chat", "choonz", "five", "six", "seven", "werk", "play"},
 layout = { layouts[7], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2]
 }}
 
-
 for s = 1, screen.count() do
     tags[s] = awful.tag(tags.names, s, tags.layout)
 end
-
--- }}}
-
 
     -- Each screen has its own tag table.
 --    tags[s] = ({1, 2, 3}, s, layouts[s])
@@ -87,7 +80,9 @@ end
 --    end
 --    tag[s][1].selected = true
 
--- {{{ Menu
+
+
+---- Menu ----
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
@@ -103,12 +98,10 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 
 mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
--- }}}
 
--- {{{ Wibox
--- Create a textclock widget
---mytextclock = awful.widget.textclock({ align = "right" })
 
+
+---- Wibox ----
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
@@ -152,8 +145,10 @@ mytasklist.buttons = awful.util.table.join(
                                           end))
 
 for s = 1, screen.count() do
+
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
+
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
@@ -162,6 +157,7 @@ for s = 1, screen.count() do
                            awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
+
     -- Create a taglist widget
     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, mytaglist.buttons)
 
@@ -172,6 +168,7 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", height = "16", screen = s })
+
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -181,26 +178,25 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
-	--obvious.battery(),
-	--obvious.volume_alsa(0, PCM),
-	battwidget,
 	obvious.clock(),
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
 end
--- }}}
 
--- {{{ Mouse bindings
+
+
+---- Mouse bindings ----
 root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
--- }}}
 
--- {{{ Key bindings
+
+
+---- Key bindings ----
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
@@ -320,10 +316,12 @@ clientbuttons = awful.util.table.join(
 
 -- Set keys
 root.keys(globalkeys)
--- }}}
 
--- {{{ Rules
+
+
+---- Rules ----
 awful.rules.rules = {
+
     -- All clients will match this rule.
     { rule = { },
       properties = { border_width = beautiful.border_width,
@@ -337,16 +335,22 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+
+    -- Pidgin needs this to be arbitrarily narrow, otherwise it goes off the edge
+    -- (and onto the next screen, if there is one)
+    -- Also, map it to tag 3 of screen 1
    { rule = { class = "Pidgin" },
       properties = { size_hints_honor = false,
 		     tag = tags[1][3]} },
+
     -- Set Firefox to always map on tags number 2 of screen 1.
    { rule = { class = "Firefox" },
      properties = { tag = tags[1][2] } },
 }
--- }}}
 
--- {{{ Signals
+
+
+---- Signals ----
 -- Signal function to execute when a new client appears.
 client.add_signal("manage", function (c, startup)
     -- Add a titlebar
@@ -375,4 +379,3 @@ end)
 
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
