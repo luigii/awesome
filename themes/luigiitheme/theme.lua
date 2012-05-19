@@ -84,17 +84,17 @@ theme.tasklist_floating_icon = awful.util.getdir("config") .. "/themes/luigiithe
 -- }}}
 
 -- {{{ Layout
-theme.layout_tile       = "/usr/share/awesome/themes/zenburn/layouts/tile.png"
-theme.layout_tileleft   = "/usr/share/awesome/themes/zenburn/layouts/tileleft.png"
-theme.layout_tilebottom = "/usr/share/awesome/themes/zenburn/layouts/tilebottom.png"
-theme.layout_tiletop    = "/usr/share/awesome/themes/zenburn/layouts/tiletop.png"
-theme.layout_fairv      = "/usr/share/awesome/themes/zenburn/layouts/fairv.png"
-theme.layout_fairh      = "/usr/share/awesome/themes/zenburn/layouts/fairh.png"
-theme.layout_spiral     = "/usr/share/awesome/themes/zenburn/layouts/spiral.png"
-theme.layout_dwindle    = "/usr/share/awesome/themes/zenburn/layouts/dwindle.png"
-theme.layout_max        = "/usr/share/awesome/themes/zenburn/layouts/max.png"
-theme.layout_fullscreen = "/usr/share/awesome/themes/zenburn/layouts/fullscreen.png"
-theme.layout_magnifier  = "/usr/share/awesome/themes/zenburn/layouts/magnifier.png"
+theme.layout_tile       = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/tile.png"
+theme.layout_tileleft   = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/tileleft.png"
+theme.layout_tilebottom = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/tilebottom.png"
+theme.layout_tiletop    = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/tiletop.png"
+theme.layout_fairv      = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/fairv.png"
+theme.layout_fairh      = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/fairh.png"
+theme.layout_spiral     = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/spiral.png"
+theme.layout_dwindle    = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/dwindle.png"
+theme.layout_max        = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/max.png"
+theme.layout_fullscreen = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/fullscreen.png"
+theme.layout_magnifier  = awful.util.getdir("config") .. "/themes/luigiitheme/assets/layouts/magnifier.png"
 theme.layout_floating   = "/usr/share/awesome/themes/sky/layouts/floating.png"
 -- }}}
 
