@@ -13,7 +13,8 @@ local helpers = require("vicious.helpers")
 
 
 -- Mpd: provides Music Player Daemon information
-module("vicious.widgets.mpd")
+-- vicious.widgets.mpd
+local mpd = {}
 
 
 -- {{{ MPD widget type
@@ -30,9 +31,9 @@ local function worker(format, warg)
     }
 
     -- Fallback to MPD defaults
-    local pass = warg and warg[1] or "\"\""
-    local host = warg and warg[2] or "127.0.0.1"
-    local port = warg and warg[3] or "6600"
+    local pass = warg and (warg.password or warg[1]) or "\"\""
+    local host = warg and (warg.host or warg[2]) or "127.0.0.1"
+    local port = warg and (warg.port or warg[3]) or "6600"
 
     -- Construct MPD client options
     local mpdh = "telnet://"..host..":"..port
@@ -60,4 +61,4 @@ local function worker(format, warg)
 end
 -- }}}
 
-setmetatable(_M, { __call = function(_, ...) return worker(...) end })
+return setmetatable(mpd, { __call = function(_, ...) return worker(...) end })

@@ -3,17 +3,6 @@
 --  * (c) 2010, MrMagne <mr.magne@yahoo.fr>
 --  * (c) 2010, Mic92 <jthalheim@gmail.com>
 ---------------------------------------------------
--- Usage example
---
--- -- Register widget
--- vicious.register(vol, vicious.contrib.pulse, " $1%", 2, "alsa_output.pci-0000_00_1b.0.analog-stereo")
--- -- Register buttons
--- vol:buttons(awful.util.table.join(
---   awful.button({ }, 1, function () awful.util.spawn("pavucontrol") end),
---   awful.button({ }, 4, function () vicious.contrib.pulse.add(5,"alsa_output.pci-0000_00_1b.0.analog-stereo") end),
---   awful.button({ }, 5, function () vicious.contrib.pulse.add(-5,"alsa_output.pci-0000_00_1b.0.analog-stereo") end)
--- ))
----------------------------------------------------
 
 -- {{{ Grab environment
 local type = type
@@ -28,11 +17,15 @@ local string = {
     format = string.format,
     gmatch = string.gmatch
 }
+local math = {
+	floor = math.floor
+}
 -- }}}
 
 
 -- Pulse: provides volume levels of requested pulseaudio sinks and methods to change them
-module("vicious.contrib.pulse")
+-- vicious.contrib.pulse
+local pulse = {}
 
 -- {{{ Helper function
 local function pacmd(args)
@@ -82,12 +75,12 @@ local function worker(format, sink)
     local vol = tonumber(string.match(data, "set%-sink%-volume "..escape(sink).." (0x[%x]+)"))
     if vol == nil then vol = 0 end
 
-    return { vol/0x10000*100, "on"}
+    return { math.floor(vol/0x10000*100), "on"}
 end
 -- }}}
 
 -- {{{ Volume control helper
-function add(percent, sink)
+function pulse.add(percent, sink)
     sink = get_sink_name(sink)
     if sink == nil then return end
 
@@ -104,7 +97,7 @@ function add(percent, sink)
     return os.execute(cmd)
 end
 
-function toggle(sink)
+function pulse.toggle(sink)
     sink = get_sink_name(sink)
     if sink == nil then return end
 
@@ -119,4 +112,4 @@ function toggle(sink)
 end
 -- }}}
 
-setmetatable(_M, { __call = function(_, ...) return worker(...) end })
+return setmetatable(pulse, { __call = function(_, ...) return worker(...) end })
