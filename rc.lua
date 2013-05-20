@@ -112,17 +112,21 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 ---- Wibox ----
 -- Create a textclock widget
-mytextclock = {}
-mytextclock = awful.widget.textclock(" %R ")
+mytextclock = wibox.widget.textbox()
+vicious.register(mytextclock, vicious.widgets.date, " %R ", 20)
 
---This doesn't work yet, so it doesn't have the click-for-calendar
---functionality of the old obvious.clock
---I'll add that when I have time
--- mytextclock.buttons = awful.util.table.join(
---    awful.button({ }, 1, naughty.notify({ text = awful.util.pread("cal -m"),
--- 					 font = "dina 8",
--- 					 timeout = 10,
--- 					 screen = mouse.screen})))
+-- Click to get a calendar (shamelessly stolen from the old obvious widget)
+mytextclock:buttons(awful.util.table.join(
+		       awful.button({ }, 1, function ()
+				       naughty.notify(
+					  { text = 	awful.util.pread("cal"):
+					    gsub("([^0-9])(" .. tonumber(os.date("%d")) .. ")([^0-9])",
+						 "%1<span foreground=\"#FF0000\">%2</span>%3"):gsub("\n+$", ""),
+					    font = "dina 8",
+					    screen = mouse.screen
+					  })
+					    end
+				   )))
 
 -- Create a wibox for each screen and add it
 mywibox = {}
