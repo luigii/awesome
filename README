@@ -1,4 +1,4 @@
-This repository includes my rc.lua, my theme.lua and vicious and obvious widgets (mostly default, with some tweaks).
+This repository includes my rc.lua, my theme.lua and vicious widgets
 
 To install, rename your ~/.config/awesome/ to ~/.config/awesome.backup/ or the like,  clone this repository into ~/.config/ then restart awesome.
 
@@ -7,5 +7,7 @@ A default wallpaper which works well with the zenburn colour scheme is provided
 The default editor for this setup is emacs and the default terminal is urxvtc (i.e. urxvtd must be running).
 
 It uses the mintsstrong font, found in the artwiz-fonts package in Arch Linux. For other distros and OSes, check your repositories, or download from http://artwizaleczapka.sourceforge.net/
+
+It also uses the dina fixed-width font, found in the dina-font package in Arch Linux or http://www.donationcoder.com/Software/Jibz/Dina/
 
 The theme is based on the zenburn theme provided with awesome, originally by anrxc
