@@ -10,7 +10,7 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper = "/home/conall/.config/awesome/themes/luigiitheme/assets/wallpaper.jpg"
+theme.wallpaper = awful.util.getdir("config") .. "/themes/luigiitheme/assets/wallpaper.jpg"
 -- }}}
 
 -- {{{ Styles
