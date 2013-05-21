@@ -128,6 +128,24 @@ mytextclock:buttons(awful.util.table.join(
 					    end
 				   )))
 
+-- Swap between long and short time formats on mouseover
+-- (there may be a more elegant way than vicious.register() every time, but I haven't seen it)
+mytextclock:connect_signal("mouse::enter", function () vicious.register(mytextclock, vicious.widgets.date, " %F %T ", 1) end)
+mytextclock:connect_signal("mouse::leave", function () vicious.register(mytextclock, vicious.widgets.date, " %R ", 20) end)
+
+-- The clock sits on a background widget to make the colours match the arrows
+mytextclockbg = wibox.widget.background()
+mytextclockbg:set_widget(mytextclock)
+mytextclockbg:set_bg("#777e76")
+
+
+-- Arrows 
+arr1 = wibox.widget.imagebox()
+arr1:set_image(beautiful.arr1)
+arr2 = wibox.widget.imagebox()
+arr2:set_image(beautiful.arr2)
+
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -210,7 +228,9 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mytextclock)
+    right_layout:add(arr2)
+    right_layout:add(mytextclockbg)
+    right_layout:add(arr1)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
