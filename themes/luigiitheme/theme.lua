@@ -10,7 +10,9 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper = awful.util.getdir("config") .. "/themes/luigiitheme/assets/wallpaper.jpg"
+theme.wallpaper = {}
+theme.wallpaper[1] = awful.util.getdir("config") .. "/themes/luigiitheme/assets/wall1.jpg"
+theme.wallpaper[2] = awful.util.getdir("config") .. "/themes/luigiitheme/assets/wall2.jpg"
 -- }}}
 
 -- {{{ Styles

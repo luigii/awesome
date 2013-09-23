@@ -46,7 +46,7 @@ end
 beautiful.init(awful.util.getdir("config") .. "/themes/luigiitheme/theme.lua")
 if beautiful.wallpaper then
     for s = 1, screen.count() do
-        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+       gears.wallpaper.maximized(beautiful.wallpaper[s], s, true)
     end
 end
 
@@ -119,7 +119,7 @@ vicious.register(mytextclock, vicious.widgets.date, " %R ", 20)
 mytextclock:buttons(awful.util.table.join(
 		       awful.button({ }, 1, function ()
 				       naughty.notify(
-					  { text = 	awful.util.pread("cal"):
+					  { text = awful.util.pread("cal"):
 					    gsub("([^0-9])(" .. tonumber(os.date("%d")) .. ")([^0-9])",
 						 "%1<span foreground=\"#FF0000\">%2</span>%3"):gsub("\n+$", ""),
 					    font = "dina 8",
