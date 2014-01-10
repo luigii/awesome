@@ -79,11 +79,11 @@ local layouts =
 ---- Tags ----
 -- Define a tag table which holds all screen tags.
 tags = {
-   names = {"⛶", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"},
+   names = {"▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"},
    -- Two sets of layouts for vertical and horizontal widescreen displays respectively
    -- (should only use the first set if there's only one display connected)
-   layout = {{ layouts[7], layouts[7], layouts[7], layouts[7], layouts[7], layouts[7], layouts[7], layouts[7], layouts[7]},
-	     { layouts[7], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2]}}
+   layout = {{ layouts[7], layouts[7], layouts[7], layouts[7], layouts[7], layouts[7], layouts[7], layouts[7]},
+	     { layouts[7], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2]}}
 }
 
 for s = 1, screen.count() do
