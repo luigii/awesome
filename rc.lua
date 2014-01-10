@@ -79,9 +79,9 @@ local layouts =
 ---- Tags ----
 -- Define a tag table which holds all screen tags.
 tags = {
-names = {"main", "ffox", "chat", "choonz", "five", "six", "seven", "werk", "play"},
-layout = { layouts[7], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2]
-}}
+   names = {"⛶", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"},
+   layout = { layouts[7], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2]}
+}
 
 for s = 1, screen.count() do
    tags[s] = awful.tag(tags.names, s, tags.layout)
