@@ -133,7 +133,9 @@ mytextclock:buttons(awful.util.table.join(
 
 -- Swap between long and short time formats on mouseover
 -- (there may be a more elegant way than vicious.register() every time, but I haven't seen it)
+mytextclock:connect_signal("mouse::enter", function () vicious.unregister(mytextclock, 1) end)
 mytextclock:connect_signal("mouse::enter", function () vicious.register(mytextclock, vicious.widgets.date, " %F %T ", 1) end)
+mytextclock:connect_signal("mouse::leave", function () vicious.unregister(mytextclock, 1) end)
 mytextclock:connect_signal("mouse::leave", function () vicious.register(mytextclock, vicious.widgets.date, " %R ", 20) end)
 
 -- The clock sits on a background widget to make the colours match the arrows
