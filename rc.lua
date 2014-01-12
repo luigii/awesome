@@ -243,7 +243,7 @@ for s = 1, screen.count() do
     layout:set_left(left_layout)
 
     -- I'm going without a tasklist for now, let's see how it goes
-    -- layout:set_middle(mytasklist[s])
+    layout:set_middle(mytasklist[s])
 
 
     layout:set_right(right_layout)

@@ -13,6 +13,7 @@ theme = {}
 theme.wallpaper = {}
 theme.wallpaper[1] = awful.util.getdir("config") .. "/themes/luigiitheme/assets/wall1.jpg"
 theme.wallpaper[2] = awful.util.getdir("config") .. "/themes/luigiitheme/assets/wall2.jpg"
+theme.tasklist_disable_icon = true
 -- }}}
 
 -- {{{ Styles
