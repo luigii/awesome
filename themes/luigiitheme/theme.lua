@@ -128,6 +128,8 @@ theme.titlebar_maximized_button_normal_inactive = "/usr/share/awesome/themes/zen
 
 theme.arr1 = awful.util.getdir("config") .. "/themes/luigiitheme/assets/arr1.png"
 theme.arr2 = awful.util.getdir("config") .. "/themes/luigiitheme/assets/arr2.png"
+theme.arr3 = awful.util.getdir("config") .. "/themes/luigiitheme/assets/arr3.png"
+theme.arr4 = awful.util.getdir("config") .. "/themes/luigiitheme/assets/arr4.png"
 -- }}}
 -- }}}
 

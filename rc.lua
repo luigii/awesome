@@ -149,7 +149,10 @@ arr1 = wibox.widget.imagebox()
 arr1:set_image(beautiful.arr1)
 arr2 = wibox.widget.imagebox()
 arr2:set_image(beautiful.arr2)
-
+arr3 = wibox.widget.imagebox()
+arr3:set_image(beautiful.arr3)
+arr4 = wibox.widget.imagebox()
+arr4:set_image(beautiful.arr4)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -232,17 +235,24 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 2 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(arr2)
-    right_layout:add(mytextclockbg)
-    right_layout:add(arr1)
+
+    if s == 1 then
+       right_layout:add(arr2)
+       right_layout:add(mytextclockbg)
+       right_layout:add(arr3)
+    end
+
+    if s == 2 then 
+       right_layout:add(arr4)
+       right_layout:add(wibox.widget.systray())
+       right_layout:add(arr1)
+    end
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
 
-    -- I'm going without a tasklist for now, let's see how it goes
     layout:set_middle(mytasklist[s])
 
 
